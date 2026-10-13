@@ -1,0 +1,16 @@
+{
+  "name": "conversor-latex-word",
+  "version": "1.0.0",
+  "description": "Conversor local de LaTeX a Word (.docx) con vista previa y ecuaciones editables, usando Pandoc.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["latex", "word", "docx", "pandoc", "conversor", "ecuaciones"],
+  "author": "Edir Gonzano",
+  "license": "MIT",
+  "private": true
+}

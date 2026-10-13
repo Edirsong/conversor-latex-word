@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Conversor LaTeX → Word</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Σ→W</span>
+      <div class="brand-text">
+        <h1>Conversor LaTeX <span class="arrow">→</span> Word</h1>
+        <p>Pega o arrastra tu código, revisa la vista previa y genera el documento.</p>
+        <p class="credit">Edir Gonzano</p>
+      </div>
+    </div>
+    <div class="converter-select">
+      <label for="converterSelect">Conversión</label>
+      <select id="converterSelect">
+        <option value="latex-to-word">LaTeX → Word</option>
+      </select>
+      <button id="btnShutdown" class="btn-ghost btn-shutdown" type="button" title="Apaga el servidor local">Apagar servidor</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+
+    <section class="pane" id="inputPane">
+      <div class="pane-header">
+        <h2>Código</h2>
+        <div class="pane-actions">
+          <button id="btnOpenFile" class="btn-ghost" type="button">Abrir archivo…</button>
+          <input type="file" id="fileInput" accept=".tex,.txt,.md" hidden />
+          <button id="btnClear" class="btn-ghost" type="button">Limpiar</button>
+        </div>
+      </div>
+      <div class="dropzone" id="dropzone">
+        <div class="line-gutter" id="lineGutter">1</div>
+        <textarea id="codeInput" spellcheck="false"
+          placeholder="Pega aquí tu código LaTeX, o arrastra un archivo .tex / .txt sobre esta caja…"></textarea>
+        <div class="drop-hint" id="dropHint">Suelta el archivo aquí</div>
+      </div>
+    </section>
+
+    <section class="pane" id="previewPane">
+      <div class="pane-header">
+        <h2>Vista previa</h2>
+        <span class="status" id="statusBadge">esperando contenido…</span>
+      </div>
+      <div class="warnings-box" id="warningsBox" hidden>
+        <button type="button" class="warnings-toggle" id="warningsToggle">
+          ⚠ <span id="warningsCount"></span> advertencia(s) de Pandoc — clic para ver detalle
+        </button>
+        <pre class="warnings-detail" id="warningsDetail" hidden></pre>
+      </div>
+      <div class="preview-scroll">
+        <iframe id="previewFrame" title="Vista previa"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="actionbar">
+    <div class="footer-credit">Hecho por <strong>Edir Gonzano</strong></div>
+    <div class="actionbar-right">
+      <div class="filename-field">
+        <label for="filenameInput">Nombre del archivo</label>
+        <input type="text" id="filenameInput" value="documento" />
+        <span>.docx</span>
+      </div>
+      <button id="btnConvert" class="btn-primary" type="button">Generar Word</button>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
